@@ -1,2 +1,4 @@
 # BBC News App
-Communication
+
+# Communication
+Our chat channel is on gitter 
