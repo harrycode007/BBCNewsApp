@@ -10,8 +10,8 @@ A native Android app using Java for writing code.
 
 # Installing Procedure
 Fork the repository.
-Clone the repo using the terminal command. Make sure you replace username with your GitHub username.
-git clone https://github.com/username/BBCNewsApp.git 
+-> Clone the repo using the terminal command. Make sure you replace username with your GitHub username.
+"git clone https://github.com/username/BBCNewsApp.git"
 
 # Setting up the Android Project
 1. Download the BBC News App project source. You can do this either by forking and cloning the repository (recommended if you plan on pushing changes) or by downloading it as a ZIP file and extracting it.
