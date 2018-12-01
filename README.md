@@ -32,3 +32,6 @@ A native Android app using Java for writing code.
 # Built With
 1. Android Studio (version: 3.2.1)
 2. Windows 10 Pro (version: 1803)
+
+# License
+This project is licensed under the MIT License, see the LICENSE.md for more details.
