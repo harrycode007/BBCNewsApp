@@ -30,5 +30,5 @@ Once all build errors have been resolved, you should be all set to build the app
 6. If the app was built successfully, you can test it by running it on either a real device or an emulated one by going to Run>Run 'app' or pressing the Run icon in the toolbar.
 
 # Built With
-Android Studio (version: 3.2.1)
-Windows 10 Pro (version: 1803)
+1. Android Studio (version: 3.2.1)
+2. Windows 10 Pro (version: 1803)
