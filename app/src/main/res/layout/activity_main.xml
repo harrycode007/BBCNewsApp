@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+    <RelativeLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:visibility="visible"
+        android:dividerHeight="1dp"
+        android:divider="#F5F5F5"
+        android:background="#FFFFFF"
+        android:id="@+id/listNews"/>
+
+    <ProgressBar
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:id="@+id/loader"
+        android:layout_centerInParent="true"/>
+
+</RelativeLayout>
