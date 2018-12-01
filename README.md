@@ -30,7 +30,10 @@ A native Android app using Java for writing code.
 6. If the app was built successfully, you can test it by running it on either a real device or an emulated one by going to Run>Run 'app' or pressing the Run icon in the toolbar.
 
 # API Used
-1. BBC News Api. 
+-> BBC News Api. 
+
+# Recording At Runtime
+-> The above attached video shows the working of the BBC News App. 
 
 # Built With
 1. Android Studio (version: 3.2.1)
