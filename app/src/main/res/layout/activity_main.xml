@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-    <RelativeLayout
-    android:layout_height="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent">
 
     <ListView
-        android:layout_height="match_parent"
+        android:id="@+id/listNews"
         android:layout_width="match_parent"
-        android:visibility="visible"
-        android:dividerHeight="1dp"
-        android:divider="#F5F5F5"
+        android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:id="@+id/listNews"/>
+        android:divider="#F5F5F5"
+        android:dividerHeight="1dp"
+        android:visibility="visible"/>
 
     <ProgressBar
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
         android:id="@+id/loader"
-        android:indeterminateDrawable="@drawable/progress"
-        android:layout_centerInParent="true"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/progress"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floating_search_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="30dp"
+        android:clickable="true"
+        android:src="@drawable/ic_search"/>
 
 </RelativeLayout>

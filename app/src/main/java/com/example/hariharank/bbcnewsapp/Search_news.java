@@ -1,14 +1,15 @@
 package com.example.hariharank.bbcnewsapp;
 
-import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity {
+public class Search_news extends AppCompatActivity {
 
     static final String KEY_AUTHOR = "author";
     static final String KEY_TITLE = "title";
@@ -32,35 +33,38 @@ public class MainActivity extends AppCompatActivity {
     String NEWS_SOURCE = "bbc-news";
     ListView listNews;
     ProgressBar loader;
-    FloatingActionButton floatingActionButton;
+    Button search;
+    EditText search_text;
     ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        floatingActionButton = findViewById(R.id.floating_search_button);
-        listNews = (ListView) findViewById(R.id.listNews);
+        setContentView(R.layout.search_news);
+        listNews = (ListView) findViewById(R.id.search_listNews);
         loader = (ProgressBar) findViewById(R.id.loader);
-        listNews.setEmptyView(loader);
+        search_text = findViewById(R.id.search_text);
+        search = findViewById(R.id.search);
 
 
-        if (Function.isNetworkAvailable(getApplicationContext())) {
-            DownloadNews newsTask = new DownloadNews();
-            newsTask.execute();
-        } else {
-            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
-        }
-
-        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, Search_news.class));
+                if (!TextUtils.isEmpty(search_text.getText().toString().trim())) {
+                    if (Function.isNetworkAvailable(getApplicationContext())) {
+                        if (dataList.size() != 0){
+                            dataList.clear();
+                        }
+                        listNews.setEmptyView(loader);
+                        Search_news.DownloadNews newsTask = new Search_news.DownloadNews();
+                        newsTask.execute();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                    }
+                }
             }
         });
     }
-
 
     class DownloadNews extends AsyncTask<String, Void, String> {
         @Override
@@ -73,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
             String xml = "";
 
             String urlParameters = "";
-            xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + "bbc-news" + "&sortBy=top&apiKey=" + "b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
+            xml = Function.excuteGet("https://newsapi.org/v2/everything?q="+ search_text.getText().toString() +"&apiKey=b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
             return xml;
         }
 
@@ -101,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Unexpected error", Toast.LENGTH_SHORT).show();
                 }
 
-                ListNewsAdapter adapter = new ListNewsAdapter(MainActivity.this, dataList);
+                ListNewsAdapter adapter = new ListNewsAdapter(Search_news.this, dataList);
                 listNews.setAdapter(adapter);
 
                 listNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -120,6 +124,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 
 }
