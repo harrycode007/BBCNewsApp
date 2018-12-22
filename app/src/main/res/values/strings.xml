@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">BBCNewsApp</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="error">Unexpected Error</string>
+    <string name="no_news">No news found</string>
+    <string name="search_hint">Keyword to search</string>
+    <string name="search">Search</string>
 </resources>

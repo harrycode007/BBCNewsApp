@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             DownloadNews newsTask = new DownloadNews();
             newsTask.execute();
         } else {
-            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
         }
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
             String xml = "";
 
             String urlParameters = "";
-            xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + "bbc-news" + "&sortBy=top&apiKey=" + "b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
+            xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + NEWS_SOURCE + "&sortBy=top&apiKey=" + API_KEY, urlParameters);
             return xml;
         }
 
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                         dataList.add(map);
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "Unexpected error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 }
 
                 ListNewsAdapter adapter = new ListNewsAdapter(MainActivity.this, dataList);
@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity {
                 });
 
             } else {
-                Toast.makeText(getApplicationContext(), "No news found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.no_news, Toast.LENGTH_SHORT).show();
             }
         }
 
