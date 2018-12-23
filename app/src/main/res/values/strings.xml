@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">BBCNewsApp</string>
+    <string name="business">Business</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="technology">Technology</string>
+    <string name="health">Health</string>
+    <string name="science">Science</string>
+    <string name="sports">Sports</string>
+    <string name="general">General</string>
 </resources>
