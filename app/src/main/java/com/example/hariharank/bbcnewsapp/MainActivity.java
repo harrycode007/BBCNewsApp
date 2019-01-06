@@ -139,9 +139,7 @@ public class MainActivity extends AppCompatActivity {
         protected String doInBackground(String... args) {
             String xml = "";
 
-            String urlParameters = "";
-            xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + NEWS_SOURCE + "&sortBy=top&apiKey=" + API_KEY, urlParameters);
-            return xml;
+            String urlParameters = "";            
             if(cat)
                 xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + "bbc-news" + "&sortBy=top&apiKey=" + "b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
             else{
