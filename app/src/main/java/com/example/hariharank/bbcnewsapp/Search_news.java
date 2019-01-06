@@ -59,7 +59,7 @@ public class Search_news extends AppCompatActivity {
                         Search_news.DownloadNews newsTask = new Search_news.DownloadNews();
                         newsTask.execute();
                     } else {
-                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), R.string.no_internet, Toast.LENGTH_LONG).show();
                     }
                 }
             }
@@ -102,7 +102,7 @@ public class Search_news extends AppCompatActivity {
                         dataList.add(map);
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(getApplicationContext(), "Unexpected error", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), R.string.error, Toast.LENGTH_SHORT).show();
                 }
 
                 ListNewsAdapter adapter = new ListNewsAdapter(Search_news.this, dataList);
@@ -118,7 +118,7 @@ public class Search_news extends AppCompatActivity {
                 });
 
             } else {
-                Toast.makeText(getApplicationContext(), "No news found", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), R.string.no_news, Toast.LENGTH_SHORT).show();
             }
         }
 
