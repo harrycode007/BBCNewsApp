@@ -5,4 +5,11 @@
     <string name="no_news">No news found</string>
     <string name="search_hint">Keyword to search</string>
     <string name="search">Search</string>
+    <string name="business">Business</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="technology">Technology</string>
+    <string name="health">Health</string>
+    <string name="science">Science</string>
+    <string name="sports">Sports</string>
+    <string name="general">General</string>
 </resources>

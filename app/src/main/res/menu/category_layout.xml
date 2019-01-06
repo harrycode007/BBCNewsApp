@@ -1,0 +1,38 @@
+<menu xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/business"
+        android:orderInCategory="100"
+        android:title="@string/business"/>
+
+    <item
+        android:id="@+id/entertainment"
+        android:orderInCategory="100"
+        android:title="@string/entertainment"/>
+
+    <item
+        android:id="@+id/technology"
+        android:orderInCategory="100"
+        android:title="@string/technology"/>
+
+    <item
+        android:id="@+id/health"
+        android:orderInCategory="100"
+        android:title="@string/health"/>
+
+    <item
+        android:id="@+id/science"
+        android:orderInCategory="100"
+        android:title="@string/science"/>
+
+    <item
+        android:id="@+id/sports"
+        android:orderInCategory="100"
+        android:title="@string/sports"/>
+
+    <item
+        android:id="@+id/general"
+        android:orderInCategory="100"
+        android:title="@string/general"/>
+
+</menu>

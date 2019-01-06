@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -30,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     static final String KEY_PUBLISHEDAT = "publishedAt";
     String API_KEY = "b0319e45fed846ba8d151cc29ff2d4c3";
     String NEWS_SOURCE = "bbc-news";
+    boolean cat = true;
+    String cate = "";
     ListView listNews;
     ProgressBar loader;
     FloatingActionButton floatingActionButton;
@@ -61,6 +66,68 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.category_layout, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.business:
+                cat = false;
+                cate = "business";
+                break;
+            case R.id.entertainment:
+                cat = false;
+                cate = "entertainment";
+                break;
+            case R.id.technology:
+                cat = false;
+                cate = "technology";
+                break;
+            case R.id.health:
+                cat = false;
+                cate = "health";
+                break;
+            case R.id.science:
+                cat = false;
+                cate = "science";
+                break;
+            case R.id.sports:
+                cat = false;
+                cate = "sports";
+                break;
+            case R.id.general:
+                cat = false;
+                cate = "general";
+        }
+
+        setContentView(R.layout.activity_main);
+        floatingActionButton = findViewById(R.id.floating_search_button);
+        listNews = (ListView) findViewById(R.id.listNews);
+        loader = (ProgressBar) findViewById(R.id.loader);
+        listNews.setEmptyView(loader);
+
+        if (Function.isNetworkAvailable(getApplicationContext())) {
+            DownloadNews newsTask = new DownloadNews();
+            dataList.clear();
+            newsTask.execute();
+        } else {
+            Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_LONG).show();
+        }
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, Search_news.class));
+            }
+        });
+        return true;
+    }
+
 
     class DownloadNews extends AsyncTask<String, Void, String> {
         @Override
@@ -75,6 +142,11 @@ public class MainActivity extends AppCompatActivity {
             String urlParameters = "";
             xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + NEWS_SOURCE + "&sortBy=top&apiKey=" + API_KEY, urlParameters);
             return xml;
+            if(cat)
+                xml = Function.excuteGet("https://newsapi.org/v1/articles?source=" + "bbc-news" + "&sortBy=top&apiKey=" + "b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
+            else{
+                xml = Function.excuteGet("https://newsapi.org/v2/everything?q=" + cate + "&sources=bbc-news" + "&sortBy=top&apiKey=" + "b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
+            } return xml;
         }
 
         @Override

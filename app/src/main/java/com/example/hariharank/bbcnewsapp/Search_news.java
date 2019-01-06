@@ -77,7 +77,7 @@ public class Search_news extends AppCompatActivity {
             String xml = "";
 
             String urlParameters = "";
-            xml = Function.excuteGet("https://newsapi.org/v2/everything?q="+ search_text.getText().toString() +"&apiKey=b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
+            xml = Function.excuteGet("https://newsapi.org/v2/everything?q="+ search_text.getText().toString() + "&sources=" + "bbc-news" + "&sortBy=top&apiKey=b0319e45fed846ba8d151cc29ff2d4c3", urlParameters);
             return xml;
         }
 
